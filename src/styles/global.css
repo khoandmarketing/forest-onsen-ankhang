@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* ===== Brand An Khang Holdings ===== */
+@theme {
+  --color-ak-red: #8B0000;
+  --color-ak-red-soft: #a51c1c;
+  --color-ak-gold: #D4AF37;
+  --color-ak-gold-soft: #e6c869;
+  --color-ak-dark: #0e0b09;
+  --color-ak-cream: #f6f1e7;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Be Vietnam Pro", system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-ak-dark);
+  color: var(--color-ak-cream);
+  margin: 0;
+}
+
+.font-display { font-family: var(--font-serif); }
+
+/* Full-screen scroll sections */
+.snap-container {
+  scroll-snap-type: y proximity;
+}
+.snap-section {
+  scroll-snap-align: start;
+  min-height: 100svh;
+}
+
+/* Gradient overlays */
+.overlay-dark {
+  background: linear-gradient(180deg, rgba(14,11,9,0.55) 0%, rgba(14,11,9,0.25) 45%, rgba(14,11,9,0.85) 100%);
+}
+
+/* KPI count-up base */
+.kpi-value { font-variant-numeric: tabular-nums; }
+
+/* Fade-in on scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gold divider */
+.gold-rule {
+  width: 64px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-ak-gold), transparent);
+}
+
+/* Buttons */
+.btn-gold {
+  background: linear-gradient(135deg, var(--color-ak-gold), var(--color-ak-gold-soft));
+  color: #2a1a00;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(212,175,55,0.35); }
+
+/* Placeholder media blocks (swap with real images/video later) */
+.media-ph {
+  background:
+    linear-gradient(135deg, rgba(139,0,0,0.35), rgba(14,11,9,0.6)),
+    repeating-linear-gradient(45deg, rgba(212,175,55,0.06) 0 12px, transparent 12px 24px);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(246,241,231,0.5);
+  font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase;
+}

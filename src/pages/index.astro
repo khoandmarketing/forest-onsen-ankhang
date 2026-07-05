@@ -1,0 +1,245 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const IMG = '/images/forest-onsen';
+
+// ===== Section 2: KPI đại cảnh sinh thái =====
+const ecoStats = [
+  { to: 55, dec: 0, suffix: '%', label: 'Cây xanh & mặt nước (~121ha)' },
+  { to: 4, dec: 0, suffix: ' triệu', label: 'Cây xanh — 170 cây/người' },
+  { to: 30, dec: 0, prefix: '+', suffix: '%', label: 'Oxy — lọc 85% bụi mịn PM2.5' },
+  { to: 5, dec: 0, prefix: '-', suffix: '°C', label: 'Mát hơn so với ngoài khu' },
+];
+
+// ===== Section 3: Onsen 8 bước =====
+const onsenSteps = [
+  { n: '01', t: 'Tắm tráng', d: 'Làm sạch cơ thể trước khi vào bể khoáng.' },
+  { n: '02', t: 'Xông ướt', d: 'Mở lỗ chân lông, thư giãn cơ.' },
+  { n: '03', t: 'Bể lụa Microbubble', d: 'Vi bọt khí siêu mịn ôm trọn làn da.' },
+  { n: '04', t: 'Bể khoáng chủ đề', d: 'Onsen Mỹ Nhân & Onsen Sức Khỏe.' },
+  { n: '05', t: 'Xông khô', d: 'Sauna đá muối thải độc.' },
+  { n: '06', t: 'Ngâm lạnh', d: 'Se khít lỗ chân lông, săn chắc da.' },
+  { n: '07', t: 'Nghỉ dưỡng', d: 'Thư giãn tại vườn Zen Tropical.' },
+  { n: '08', t: 'Lặp lại', d: 'Chu trình trị liệu chuẩn Nhật.' },
+];
+
+// ===== Section 4: Tầng 5A =====
+const floor5a = [
+  { icon: '🏊', t: 'Bể bơi vô cực 500m²', d: 'Điện phân muối + Jacuzzi, view Hồ Thiên Nga ở độ cao 16m.' },
+  { icon: '💪', t: 'Gym · Yoga · Sauna · Steam', d: 'Tầng tiện ích 5.000m² liên thông 4 tòa tháp.' },
+  { icon: '🌿', t: 'Vườn Nhật 7.000m²', d: 'Zen Tropical dưới chân tháp — cầu gỗ, bonsai, thiền.' },
+];
+
+// ===== Section 5: Loại căn hộ =====
+const units = [
+  { t: '1PN', d: 'Tối ưu cho người độc thân / đầu tư cho thuê.' },
+  { t: '2PN', d: 'Couple & gia đình trẻ, layout thoáng.' },
+  { t: '3PN', d: 'Gia đình 3 thế hệ, view Hồ Thiên Nga.' },
+  { t: 'Dual-key (Dioki)', d: 'Đa công năng — ở kết hợp cho thuê.' },
+  { t: 'Penthouse', d: 'Tầng cao, view hồ panorama, số lượng giới hạn.' },
+];
+
+// ===== Section 6: Lý do chọn =====
+const reasons = [
+  { icon: '♨️', t: 'Chăm sóc sức khỏe chủ động', d: 'Onsen tại gia mỗi ngày — chỉ 1 phím thang máy, không cần đặt lịch.' },
+  { icon: '🌳', t: 'Môi trường sống trong lành', d: 'Không đánh đổi tiện ích lấy ô nhiễm — 55% xanh & mặt nước.' },
+  { icon: '🏙️', t: 'Tiện ích tích hợp', d: 'Mọi thứ trong khối đế, vài bước chân là tới.' },
+  { icon: '🧘', t: 'Cộng đồng wellness', d: 'Cư dân cùng lối sống dưỡng lành, an nhiên.' },
+];
+
+const HOTLINE = '[Hotline An Khang]';
+const WEBSITE = 'ankhangholdings.com';
+---
+
+<Layout>
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'RealEstateListing',
+    name: 'Forest Onsen — Eco Retreat',
+    description: 'Căn hộ khoáng nóng Onsen đầu tiên tại miền Nam, trong đại đô thị sinh thái Eco Retreat 220ha, Long An.',
+    address: { '@type': 'PostalAddress', addressLocality: 'Bến Lức', addressRegion: 'Long An', addressCountry: 'VN' },
+    offers: { '@type': 'Offer', priceCurrency: 'VND', description: 'Liên hệ An Khang Holdings nhận bảng giá' },
+  })} />
+
+  <main class="snap-container">
+
+    <!-- ===================== SECTION 1: HERO ===================== -->
+    <section class="snap-section relative flex items-center justify-center overflow-hidden">
+      <!-- swap .media-ph with <video>/<img> hero -->
+      <div class="media-ph absolute inset-0">HERO VIDEO / ẢNH FLYCAM HỒ THIÊN NGA</div>
+      <div class="overlay-dark absolute inset-0"></div>
+      <div class="relative z-10 text-center px-6 max-w-4xl reveal">
+        <p class="font-sans tracking-[0.35em] text-ak-gold text-xs md:text-sm uppercase mb-6">
+          Eco Retreat · Long An
+        </p>
+        <h1 class="font-display text-4xl md:text-6xl leading-tight text-ak-cream">
+          Về nhà qua một khu rừng.<br />
+          <span class="text-ak-gold">Mỗi ngày là một hành trình dưỡng lành.</span>
+        </h1>
+        <p class="mt-6 text-base md:text-lg text-ak-cream/80 max-w-2xl mx-auto">
+          Forest Onsen — Căn hộ khoáng nóng Onsen đầu tiên tại miền Nam.
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#lien-he" class="btn-gold px-8 py-4 rounded-full text-sm">Nhận bảng giá & tham quan</a>
+          <a href="#onsen" class="px-8 py-4 rounded-full text-sm border border-ak-gold/50 text-ak-cream hover:bg-ak-gold/10 transition">
+            Khám phá Onsen ♨
+          </a>
+        </div>
+        <p class="mt-14 text-ak-cream/50 text-xs animate-pulse">▼ Cuộn để cảm nhận</p>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION 2: ĐẠI CẢNH SINH THÁI ===================== -->
+    <section class="snap-section relative flex items-center py-20 px-6 bg-ak-dark">
+      <div class="max-w-6xl mx-auto w-full">
+        <div class="text-center mb-14 reveal">
+          <div class="gold-rule mx-auto mb-6"></div>
+          <h2 class="font-display text-3xl md:text-5xl text-ak-cream">Không phải căn hộ có cây xanh —</h2>
+          <p class="font-display text-2xl md:text-4xl text-ak-gold mt-2">mà là một khu rừng có căn hộ.</p>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {ecoStats.map((s) => (
+            <div class="reveal text-center rounded-2xl border border-ak-gold/20 bg-white/5 p-6 md:p-8">
+              <div
+                class="kpi-value font-display text-3xl md:text-5xl text-ak-gold"
+                data-to={s.to} data-dec={s.dec} data-suffix={s.suffix ?? ''} data-prefix={s.prefix ?? ''}
+              >0</div>
+              <p class="mt-3 text-xs md:text-sm text-ak-cream/70 leading-snug">{s.label}</p>
+            </div>
+          ))}
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
+          <div class="media-ph aspect-[4/3] rounded-2xl">Rừng 8 tầng lớp</div>
+          <div class="media-ph aspect-[4/3] rounded-2xl">Mặt nước 23ha</div>
+          <div class="media-ph aspect-[4/3] rounded-2xl">Đại lộ cây xanh</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION 3: ONSEN ===================== -->
+    <section id="onsen" class="snap-section relative flex items-center py-20 px-6"
+      style="background: radial-gradient(120% 80% at 50% 0%, rgba(139,0,0,0.35), var(--color-ak-dark));">
+      <div class="max-w-6xl mx-auto w-full">
+        <div class="text-center mb-12 reveal">
+          <p class="tracking-[0.3em] text-ak-gold text-xs uppercase mb-4">Trái tim dự án</p>
+          <h2 class="font-display text-3xl md:text-5xl text-ak-cream">Tổ hợp Onsen 1.800m²</h2>
+          <p class="mt-4 text-ak-cream/75 max-w-2xl mx-auto">
+            Hợp tác chuyên gia Nhật hơn 100 năm kinh nghiệm. Chu trình trị liệu 8 bước chuẩn Nhật,
+            2 dòng khoáng: <span class="text-ak-gold">Onsen Mỹ Nhân</span> &amp; <span class="text-ak-gold">Onsen Sức Khỏe</span>.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+          {onsenSteps.map((s) => (
+            <div class="reveal rounded-xl border border-ak-gold/20 bg-black/30 p-4 md:p-5">
+              <span class="font-display text-ak-gold text-lg">{s.n}</span>
+              <h3 class="font-semibold text-ak-cream mt-1 text-sm md:text-base">{s.t}</h3>
+              <p class="text-ak-cream/60 text-xs mt-1 leading-snug">{s.d}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-center font-display text-xl md:text-3xl text-ak-cream reveal">
+          "Nhật Bản có Onsen sau 100 năm.<br /><span class="text-ak-gold">Bạn có nó ngay dưới nhà mình."</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION 4: TẦNG 5A ===================== -->
+    <section class="snap-section relative flex items-center py-20 px-6 bg-ak-dark overflow-hidden">
+      <div class="media-ph absolute inset-0 opacity-30">BỂ BƠI VÔ CỰC TẦNG 5A · VIEW HỒ THIÊN NGA</div>
+      <div class="relative z-10 max-w-6xl mx-auto w-full">
+        <div class="text-center mb-12 reveal">
+          <div class="gold-rule mx-auto mb-6"></div>
+          <h2 class="font-display text-3xl md:text-5xl text-ak-cream">Tầng 5A — Resort lơ lửng</h2>
+          <p class="mt-4 text-ak-cream/75 max-w-2xl mx-auto">
+            Ở độ cao 16m — bạn không ở trong toà nhà, bạn đang nghỉ dưỡng trên không.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {floor5a.map((f) => (
+            <div class="reveal rounded-2xl border border-ak-gold/20 bg-white/5 backdrop-blur p-8 text-center">
+              <div class="text-4xl mb-4">{f.icon}</div>
+              <h3 class="font-display text-xl text-ak-gold">{f.t}</h3>
+              <p class="mt-3 text-sm text-ak-cream/70 leading-relaxed">{f.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION 5: CĂN HỘ CÓ VƯỜN ===================== -->
+    <section class="snap-section relative flex items-center py-20 px-6 bg-ak-dark">
+      <div class="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <div class="gold-rule mb-6"></div>
+          <h2 class="font-display text-3xl md:text-5xl text-ak-cream leading-tight">
+            Sống trong căn hộ,<br /><span class="text-ak-gold">cảm giác như biệt thự.</span>
+          </h2>
+          <p class="mt-6 text-ak-cream/75 leading-relaxed">
+            Vườn thư giãn dọc căn hộ tới <span class="text-ak-gold font-semibold">28m²</span> —
+            "mở cửa là thấy vườn, qua vườn mới vào phòng khách". Về nhà qua vườn mới là nhà,
+            từ nhà là tầm view Hồ Thiên Nga.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            {units.map((u) => (
+              <div class="rounded-full border border-ak-gold/30 px-4 py-2 text-sm text-ak-cream/85">
+                <span class="text-ak-gold font-semibold">{u.t}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="reveal media-ph aspect-[3/4] rounded-3xl">CĂN HỘ MỞ RA VƯỜN · VIEW HỒ THIÊN NGA</div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION 6: VÌ SAO CHỌN ===================== -->
+    <section class="snap-section relative flex items-center py-20 px-6"
+      style="background: linear-gradient(180deg, var(--color-ak-dark), #17100c);">
+      <div class="max-w-5xl mx-auto w-full">
+        <div class="text-center mb-14 reveal">
+          <div class="gold-rule mx-auto mb-6"></div>
+          <h2 class="font-display text-3xl md:text-5xl text-ak-cream">Vì sao chọn Forest Onsen</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {reasons.map((r) => (
+            <div class="reveal flex gap-5 rounded-2xl border border-ak-gold/15 bg-white/5 p-6">
+              <div class="text-3xl shrink-0">{r.icon}</div>
+              <div>
+                <h3 class="font-display text-xl text-ak-gold">{r.t}</h3>
+                <p class="mt-2 text-sm text-ak-cream/70 leading-relaxed">{r.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SECTION 7: CTA / LIÊN HỆ ===================== -->
+    <section id="lien-he" class="snap-section relative flex items-center py-20 px-6 overflow-hidden">
+      <div class="media-ph absolute inset-0 opacity-25">PHỐI CẢNH TỔNG THỂ ECO RETREAT</div>
+      <div class="overlay-dark absolute inset-0"></div>
+      <div class="relative z-10 max-w-xl mx-auto w-full text-center reveal">
+        <div class="gold-rule mx-auto mb-6"></div>
+        <h2 class="font-display text-3xl md:text-5xl text-ak-cream">Đăng ký nhận bảng giá</h2>
+        <p class="mt-3 text-ak-cream/75">Nhận bảng giá &amp; đặt lịch tham quan nhà mẫu Forest Onsen.</p>
+        <form class="mt-8 space-y-4 text-left" onsubmit="return false;">
+          <input type="text" placeholder="Họ và tên"
+            class="w-full rounded-xl bg-white/10 border border-ak-gold/25 px-4 py-3 text-ak-cream placeholder-ak-cream/40 focus:outline-none focus:border-ak-gold" />
+          <input type="tel" placeholder="Số điện thoại"
+            class="w-full rounded-xl bg-white/10 border border-ak-gold/25 px-4 py-3 text-ak-cream placeholder-ak-cream/40 focus:outline-none focus:border-ak-gold" />
+          <button type="submit" class="btn-gold w-full py-4 rounded-xl">
+            Đăng ký nhận bảng giá &amp; tham quan nhà mẫu
+          </button>
+        </form>
+        <p class="mt-8 text-ak-cream/70 text-sm">
+          Hotline: <span class="text-ak-gold font-semibold">{HOTLINE}</span><br />
+          Website: <span class="text-ak-gold">{WEBSITE}</span>
+        </p>
+        <p class="mt-10 text-ak-cream/40 text-xs">
+          © 2026 An Khang Holdings · Đơn vị phân phối chính thức Forest Onsen — Eco Retreat
+        </p>
+      </div>
+    </section>
+
+  </main>
+</Layout>

@@ -1,0 +1,90 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Forest Onsen — Căn hộ khoáng nóng Onsen | Eco Retreat, Long An | An Khang Holdings',
+  description = 'Forest Onsen — căn hộ khoáng nóng Onsen đầu tiên tại miền Nam, trong đại đô thị sinh thái Eco Retreat 220ha (Long An). Tổ hợp Onsen 1.800m² chuẩn Nhật, 55% cây xanh & mặt nước, mát hơn 3-5°C. Phân phối bởi An Khang Holdings.',
+  ogImage = '/images/forest-onsen/hero.jpg',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:locale" content="vi_VN" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+
+    <script is:inline>
+      // Reveal on scroll
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              io.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // KPI count-up
+      const kio = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (!e.isIntersecting) return;
+            const el = e.target;
+            const to = parseFloat(el.dataset.to);
+            const dec = parseInt(el.dataset.dec || '0');
+            const suffix = el.dataset.suffix || '';
+            const prefix = el.dataset.prefix || '';
+            let start = null;
+            const dur = 1400;
+            function step(ts) {
+              if (!start) start = ts;
+              const p = Math.min((ts - start) / dur, 1);
+              const val = (to * (1 - Math.pow(1 - p, 3))).toFixed(dec);
+              el.textContent = prefix + val + suffix;
+              if (p < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+            kio.unobserve(el);
+          });
+        },
+        { threshold: 0.5 }
+      );
+      document.querySelectorAll('[data-to]').forEach((el) => kio.observe(el));
+    </script>
+  </body>
+</html>
