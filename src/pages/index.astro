@@ -66,8 +66,12 @@ const WEBSITE = 'ankhangholdings.com';
 
     <!-- ===================== SECTION 1: HERO ===================== -->
     <section class="snap-section relative flex items-center justify-center overflow-hidden">
-      <!-- swap .media-ph with <video>/<img> hero -->
-      <div class="media-ph absolute inset-0">HERO VIDEO / ẢNH FLYCAM HỒ THIÊN NGA</div>
+      <video
+        class="absolute inset-0 w-full h-full object-cover"
+        src={`${IMG}/hero-video.mp4`}
+        poster={`${IMG}/hero-binhminh.jpg`}
+        autoplay muted loop playsinline
+      ></video>
       <div class="overlay-dark absolute inset-0"></div>
       <div class="relative z-10 text-center px-6 max-w-4xl reveal">
         <p class="font-sans tracking-[0.35em] text-ak-gold text-xs md:text-sm uppercase mb-6">
@@ -110,17 +114,18 @@ const WEBSITE = 'ankhangholdings.com';
           ))}
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 reveal">
-          <div class="media-ph aspect-[4/3] rounded-2xl">Rừng 8 tầng lớp</div>
-          <div class="media-ph aspect-[4/3] rounded-2xl">Mặt nước 23ha</div>
-          <div class="media-ph aspect-[4/3] rounded-2xl">Đại lộ cây xanh</div>
+          <img src={`${IMG}/canhquan.jpg`} alt="Cảnh quan Forest Onsen" loading="lazy" class="aspect-[4/3] w-full object-cover rounded-2xl" />
+          <img src={`${IMG}/daytime.jpg`} alt="Forest Onsen ban ngày" loading="lazy" class="aspect-[4/3] w-full object-cover rounded-2xl" />
+          <img src={`${IMG}/forest20.jpg`} alt="Đại lộ cây xanh Forest Onsen" loading="lazy" class="aspect-[4/3] w-full object-cover rounded-2xl" />
         </div>
       </div>
     </section>
 
     <!-- ===================== SECTION 3: ONSEN ===================== -->
-    <section id="onsen" class="snap-section relative flex items-center py-20 px-6"
-      style="background: radial-gradient(120% 80% at 50% 0%, rgba(139,0,0,0.35), var(--color-ak-dark));">
-      <div class="max-w-6xl mx-auto w-full">
+    <section id="onsen" class="snap-section relative flex items-center py-20 px-6 overflow-hidden">
+      <img src={`${IMG}/onsen.jpg`} alt="Tổ hợp Onsen Forest Onsen" loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="absolute inset-0" style="background: radial-gradient(120% 90% at 50% 0%, rgba(139,0,0,0.55), rgba(14,11,9,0.88));"></div>
+      <div class="relative z-10 max-w-6xl mx-auto w-full">
         <div class="text-center mb-12 reveal">
           <p class="tracking-[0.3em] text-ak-gold text-xs uppercase mb-4">Trái tim dự án</p>
           <h2 class="font-display text-3xl md:text-5xl text-ak-cream">Tổ hợp Onsen 1.800m²</h2>
@@ -146,7 +151,8 @@ const WEBSITE = 'ankhangholdings.com';
 
     <!-- ===================== SECTION 4: TẦNG 5A ===================== -->
     <section class="snap-section relative flex items-center py-20 px-6 bg-ak-dark overflow-hidden">
-      <div class="media-ph absolute inset-0 opacity-30">BỂ BƠI VÔ CỰC TẦNG 5A · VIEW HỒ THIÊN NGA</div>
+      <img src={`${IMG}/beboi-vocuc.jpg`} alt="Bể bơi vô cực tầng 5A" loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
+      <div class="overlay-dark absolute inset-0"></div>
       <div class="relative z-10 max-w-6xl mx-auto w-full">
         <div class="text-center mb-12 reveal">
           <div class="gold-rule mx-auto mb-6"></div>
@@ -188,7 +194,7 @@ const WEBSITE = 'ankhangholdings.com';
             ))}
           </div>
         </div>
-        <div class="reveal media-ph aspect-[3/4] rounded-3xl">CĂN HỘ MỞ RA VƯỜN · VIEW HỒ THIÊN NGA</div>
+        <img src={`${IMG}/vuonthugian.jpg`} alt="Căn hộ Forest Onsen mở ra vườn thư giãn" loading="lazy" class="reveal aspect-[3/4] w-full object-cover rounded-3xl" />
       </div>
     </section>
 
@@ -216,7 +222,7 @@ const WEBSITE = 'ankhangholdings.com';
 
     <!-- ===================== SECTION 7: CTA / LIÊN HỆ ===================== -->
     <section id="lien-he" class="snap-section relative flex items-center py-20 px-6 overflow-hidden">
-      <div class="media-ph absolute inset-0 opacity-25">PHỐI CẢNH TỔNG THỂ ECO RETREAT</div>
+      <img src={`${IMG}/hero-binhminh.jpg`} alt="Phối cảnh tổng thể Forest Onsen" loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
       <div class="overlay-dark absolute inset-0"></div>
       <div class="relative z-10 max-w-xl mx-auto w-full text-center reveal">
         <div class="gold-rule mx-auto mb-6"></div>
